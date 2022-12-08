@@ -42,8 +42,10 @@ public class HdfsOverFtpServer {
 	 * @throws IOException
 	 */
 	private static void loadConfig() throws IOException {
+
 		Properties props = new Properties();
-		props.load(new FileInputStream(loadResource("/hdfs-over-ftp.properties")));
+//		props.load(new FileInputStream(loadResource("/hdfs-over-ftp.properties")));
+		props.load(HdfsOverFtpServer.class.getResourceAsStream("/hdfs-over-ftp.properties"));
 
 		try {
 			port = Integer.parseInt(props.getProperty("port"));

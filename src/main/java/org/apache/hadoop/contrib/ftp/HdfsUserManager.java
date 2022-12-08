@@ -331,8 +331,7 @@ public class HdfsUserManager extends AbstractUserManager {
 		user.setHomeDirectory(userDataProp
 				.getProperty(baseKey + ATTR_HOME, "/"));
 
-		user.setGroups(parseGroups(userDataProp
-				.getProperty(baseKey + "groups")));
+		user.setGroups(parseGroups(userDataProp.getProperty(baseKey + "groups")));
 
 		List<Authority> authorities = new ArrayList<Authority>();
 
