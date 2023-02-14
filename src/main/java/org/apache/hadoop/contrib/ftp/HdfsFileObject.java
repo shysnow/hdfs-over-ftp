@@ -157,6 +157,12 @@ public class HdfsFileObject implements FileObject {
 				}
 			}
 			log.debug("PERMISSIONS: " + path + " - " + " read denied");
+
+			// setfacl的情况未处理,会导致无法读文件,这里简单的直接放行
+			if(path.toString().startsWith(user.getHomeDirectory())){
+				return true;
+			}
+
 			return false;
 		} catch (IOException e) {
 			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
