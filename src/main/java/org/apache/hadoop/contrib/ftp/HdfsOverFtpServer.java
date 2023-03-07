@@ -1,5 +1,6 @@
 package org.apache.hadoop.contrib.ftp;
 
+import org.apache.ftpserver.DefaultConnectionConfig;
 import org.apache.ftpserver.DefaultDataConnectionConfiguration;
 import org.apache.ftpserver.FtpServer;
 import org.apache.ftpserver.interfaces.DataConnectionConfiguration;
@@ -104,6 +105,10 @@ public class HdfsOverFtpServer {
 		HdfsOverFtpSystem.setHDFS_URI(hdfsUri);
 
 		FtpServer server = new FtpServer();
+		//同时登录人数限制
+		DefaultConnectionConfig con = new DefaultConnectionConfig();
+		con.setMaxLogins(0);
+		server.setConnectionConfig(con);
 
 		DataConnectionConfiguration dataCon = new DefaultDataConnectionConfiguration();
 		dataCon.setPassivePorts(passivePorts);
